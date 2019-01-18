@@ -1,11 +1,9 @@
 from random import randint
 from datetime import datetime
-
+from menu import n, newString
 file_res = open('output.txt', 'w')
 lastG = ''
-n = 30
 nextBig = 1
-newString = 100
 print(datetime.time(datetime.now()))
 for i in range(n):
     file = open('data/' + lastG + '.txt', 'r')
@@ -22,6 +20,7 @@ for i in range(n):
         file_res.write(" " + textG[0].upper() + textG[1:])
     else:
         file_res.write(" " + textG[0].lower() + textG[1:])
+
     if textG[-1] == '.':
         nextBig = 1
     lastG = textG
