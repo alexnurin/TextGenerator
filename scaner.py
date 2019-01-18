@@ -3,8 +3,10 @@
 
 import re
 
+
 def scaner():
-    file = open('input.txt', encoding='utf-8')
+    file = open('input.txt', 'r', encoding='utf-8')
+    bigFile = open("names.txt", 'a', encoding='utf-8')
     f = file.read()
     #file.close()
     f = f.split()
@@ -13,7 +15,7 @@ def scaner():
     print(f)
     last = '.'
     for i in f:
-        text = re.compile('[^a-zа-я:.]').sub('', i)
+        text = re.compile('[^a-zа-я:.A-ZА-Я]').sub('', i)
         if text == '':
             continue
         path = 'data/' + last + '.txt'
@@ -22,9 +24,10 @@ def scaner():
         if last[-1] == '.':
             file_res = open('data/.txt', 'a')
             file_res.write(text + '\n')
+        if last[-1] != '.' and text[0] != text[0].lower():
+            bigFile.write(text+'\n')
         last = text.format('utf-8')
     open('data/' + last + '.txt', 'a').write('')
 
+
 scaner()
-
-

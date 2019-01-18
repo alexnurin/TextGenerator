@@ -1,6 +1,6 @@
 from random import randint
 from datetime import datetime
-from menu import n, newString
+from menu import n, newString, bigSet
 file_res = open('output.txt', 'w')
 lastG = ''
 nextBig = 1
@@ -15,7 +15,7 @@ for i in range(n):
         file = open('data/.txt', 'r')
         textG_all = file.readlines()
     textG = textG_all[randint(1, len(textG_all))-1][:-1]
-    if nextBig:
+    if nextBig or textG in bigSet:
         nextBig = 0
         file_res.write(" " + textG[0].upper() + textG[1:])
     else:

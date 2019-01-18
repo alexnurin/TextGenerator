@@ -1,11 +1,20 @@
+import re
+
 
 newString = 100
 n = 30
+
+bigSetData = re.compile('[^a-zа-яA-ZА-Я:. \n]').sub('', open("names.txt", 'r', encoding='utf-8').read()).split()
+bigSet = {i for i in bigSetData}
+
+print(bigSet)
+
 start = open("input.txt", 'w')
 start.write('')
 start.close()
 exec(open("generator.py").read())
 exec(open("scaner.py").read())
+
 while True:
     print("Введите команду. Введите 'help' для получения команд")
     cmd = input()
@@ -55,3 +64,4 @@ while True:
 
     else:
         print('Неизвестная команда.')
+
