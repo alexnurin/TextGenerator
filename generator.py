@@ -21,7 +21,9 @@ for i in range(n):
         nextBig = 0
         file_res.write(" " + textG[0].upper() + textG[1:])
     else:
-        file_res.write(" " + textG)
+        file_res.write(" " + textG[0].lower() + textG[1:])
+    if textG[-1] == '.':
+        nextBig = 1
     lastG = textG
     if i % newString == newString - 1:
         file_res.write('\n')
