@@ -1,19 +1,29 @@
 from random import randint
-
+from datetime import datetime
 
 file_res = open('output.txt', 'w')
-last = u''
-n = 300
+lastG = ''
+n = 30
+nextBig = 1
+newString = 100
+print(datetime.time(datetime.now()))
 for i in range(n):
-    file = open('data/' + last + '.txt', 'r')
-    text_all = file.readlines()
-    print(text_all)
-    if len(text_all) == 0:
+    file = open('data/' + lastG + '.txt', 'r')
+    textG_all = file.readlines()
+    #print(textG_all)
+    if len(textG_all) == 0:
         file_res.write('.')
+        nextBig = 1
         file = open('data/.txt', 'r')
-        text_all = file.readlines()
-    text = text_all[randint(1, len(text_all))-1][:-1]
-    file_res.write(" " + text)
-    last = text
-    if i % 20 == 19:
+        textG_all = file.readlines()
+    textG = textG_all[randint(1, len(textG_all))-1][:-1]
+    if nextBig:
+        nextBig = 0
+        file_res.write(" " + textG[0].upper() + textG[1:])
+    else:
+        file_res.write(" " + textG)
+    lastG = textG
+    if i % newString == newString - 1:
         file_res.write('\n')
+file_res.write('.')
+file_res.close()
