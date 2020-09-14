@@ -20,3 +20,4 @@ for i in range(n):
         file_res.write('\n')
 file_res.write('.')
 file_res.close()
+#alex nurin loh realno
